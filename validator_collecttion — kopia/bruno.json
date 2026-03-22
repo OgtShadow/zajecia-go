@@ -1,9 +1,0 @@
-{
-  "version": "1",
-  "name": "validator_Collecttion",
-  "type": "collection",
-  "ignore": [
-    "node_modules",
-    ".git"
-  ]
-}
