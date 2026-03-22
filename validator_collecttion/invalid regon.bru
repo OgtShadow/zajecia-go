@@ -1,0 +1,22 @@
+meta {
+  name: invalid regon
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8080/validate?regon=1000000082
+  body: none
+  auth: none
+}
+
+params:query {
+  regon: 1000000082
+}
+
+tests {
+  test("validate expect false", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.is_valid).to.equal(false);
+  });
+}
