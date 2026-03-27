@@ -1,0 +1,15 @@
+app:
+  name: "validator-service"
+  env: "dev"
+  port: 8080
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  name: "validators"
+
+features:
+  metrics_enabled: true
+  request_timeout_seconds: 10
