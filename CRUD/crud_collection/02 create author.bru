@@ -1,0 +1,30 @@
+meta {
+  name: create author
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/autorzy
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Marek Grechuta",
+    "country": "Polska"
+  }
+}
+
+tests {
+  test("author created", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.id).to.be.a("number");
+    expect(responseJson.name).to.equal("Marek Grechuta");
+  });
+}

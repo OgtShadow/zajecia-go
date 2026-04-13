@@ -1,0 +1,32 @@
+meta {
+  name: update track
+  type: http
+  seq: 9
+}
+
+put {
+  url: http://localhost:8080/utwory/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "author_id": 1,
+    "title": "Korowód",
+    "genre": "poezja śpiewana",
+    "release_year": 1971
+  }
+}
+
+tests {
+  test("track updated", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.id).to.equal(1);
+    expect(responseJson.title).to.equal("Korowód");
+  });
+}

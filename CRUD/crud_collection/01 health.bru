@@ -1,0 +1,18 @@
+meta {
+  name: health
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/health
+  body: none
+  auth: none
+}
+
+tests {
+  test("health status is ok", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.status).to.equal("ok");
+  });
+}

@@ -1,0 +1,32 @@
+meta {
+  name: create track
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8080/utwory
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "author_id": 1,
+    "title": "Dni, których nie znamy",
+    "genre": "poezja śpiewana",
+    "release_year": 1971
+  }
+}
+
+tests {
+  test("track created", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.id).to.be.a("number");
+    expect(responseJson.author_id).to.equal(1);
+  });
+}

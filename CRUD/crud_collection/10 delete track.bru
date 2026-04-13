@@ -1,0 +1,18 @@
+meta {
+  name: delete track
+  type: http
+  seq: 10
+}
+
+delete {
+  url: http://localhost:8080/utwory/1
+  body: none
+  auth: none
+}
+
+tests {
+  test("track deleted message", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.message).to.equal("track deleted");
+  });
+}

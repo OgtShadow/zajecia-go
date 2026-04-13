@@ -1,0 +1,18 @@
+meta {
+  name: list tracks
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:8080/utwory
+  body: none
+  auth: none
+}
+
+tests {
+  test("tracks list is array", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(Array.isArray(responseJson)).to.equal(true);
+  });
+}

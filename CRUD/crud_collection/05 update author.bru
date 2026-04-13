@@ -1,0 +1,30 @@
+meta {
+  name: update author
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/autorzy/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Marek Grechuta",
+    "country": "PL"
+  }
+}
+
+tests {
+  test("author updated", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.id).to.equal(1);
+    expect(responseJson.country).to.equal("PL");
+  });
+}

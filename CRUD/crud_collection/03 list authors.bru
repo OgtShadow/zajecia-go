@@ -1,0 +1,18 @@
+meta {
+  name: list authors
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/autorzy
+  body: none
+  auth: none
+}
+
+tests {
+  test("authors list is array", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(Array.isArray(responseJson)).to.equal(true);
+  });
+}

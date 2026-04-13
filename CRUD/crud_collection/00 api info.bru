@@ -1,0 +1,19 @@
+meta {
+  name: api info
+  type: http
+  seq: 0
+}
+
+get {
+  url: http://localhost:8080/
+  body: none
+  auth: none
+}
+
+tests {
+  test("api info returns commands", async function () {
+    const responseJson = res.getBody ? res.getBody() : await res.json();
+    expect(responseJson.name).to.equal("CRUD Music API");
+    expect(Array.isArray(responseJson.commands)).to.equal(true);
+  });
+}
