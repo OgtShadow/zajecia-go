@@ -1,2 +1,4 @@
 logger/log.csv
 Moderator/badwords.csv
+JWT/token.txt
+JWT/invalid-token.txt
